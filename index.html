@@ -42,7 +42,15 @@
     
         <label for="description">Description</label><textarea name="description"></textarea><br>
     
-        Booking ID Text:<input id="00NgK000011RmNe" maxlength="30" name="00NgK000011RmNe" size="20" type="text" /><br>
+        <label for="00NgK000011RmNe">Booking ID Text:</label>
+<input 
+    id="00NgK000011RmNe" 
+    maxlength="30" 
+    name="00NgK000011RmNe" 
+    size="20" 
+    type="text"
+/><br>
+
     
         <label for="reason">Case Reason</label><select id="reason" name="reason">
             <option value="">--None--</option>
@@ -58,6 +66,26 @@
         <input type="submit" name="submit">
     
     </form>
+
+<script>
+    // Function to get URL parameter value
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const bookingIdFromUrl = getQueryParam('bookingId');
+        const bookingInput = document.getElementById('00NgK000011RmNe');
+
+        // Only pre-fill if URL has bookingId AND field is empty
+        if (bookingIdFromUrl && bookingInput && !bookingInput.value) {
+            bookingInput.value = bookingIdFromUrl;
+        }
+    });
+</script>
+
+
     
 </body>
 </html>
